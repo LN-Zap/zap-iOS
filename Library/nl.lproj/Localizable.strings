@@ -1,42 +1,42 @@
-"generic.memo.placeholder" = "Waar is dit voor?";
+"generic.memo.placeholder" = "Waarvoor is dit?";
 "generic.qr_code.copy_button" = "Kopieer";
-"generic.qr_code.copy_success_message" = "Adres is gekopieerd naar klembord.";
+"generic.qr_code.copy_success_message" = "Adres is naar klembord gekopieerd.";
 "generic.pasteboard.invalid_address" = "Ongeldig adres";
 "generic.qr_code.share_button" = "Deel";
-"generic.cancel" = "Afbreken";
+"generic.cancel" = "Annuleer";
 
 "link.help" = "https://docs.zaphq.io/";
 "link.help.zapconnect" = "https://docs.zaphq.io/docs-ios-remote-node-setup";
-"link.privacy" = "http://zap.jackmallers.com/privacy";
+"link.privacy" = "https://zaphq.io/privacy/";
 "link.bug_report" = "https://github.com/LN-Zap/zap-iOS/issues";
 "link.lnd_releases" = "https://github.com/lightningnetwork/lnd/releases";
 
-"error.wrong_uri_format" = "Onbekend link formaat.";
+"error.wrong_uri_format" = "Onbekend linkformaat.";
 "error.wrong_uri_network" = "Je probeerde een link te open voor %@, maar je node is verbonden met %@.";
 "error.block_explorer.unsupported_network" = "%@ ondersteunt geen %@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
-"lnd_error.rest_network_error" = "Check your internet connection.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
-"lnd_error.invoice_already_paid" = "Invoice is already paid.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.wallet_encrypted" = "Wallet is versleuteld";
+"lnd_error.lnd_not_running" = "Lnd lijkt niet goed te werken.";
+"lnd_error.transaction_output_is_dust" = "Transactie-output is dust.";
+"lnd_error.no_outputs" = "Geen outputs.";
+"lnd_error.rest_network_error" = "Controleer je internetverbinding.";
+"lnd_error.unable_to_find_node" = "Kan node niet vinden.";
+"lnd_error.insufficient_funds_available" = "Onvoldoende tegoed beschikbaar om een transactie op te zetten.";
+"lnd_error.unknown_error" = "Onbekende error 1";
+"lnd_error.api_transformation_error" = "Onbekende error 2";
+"lnd_error.invoice_already_paid" = "Invoice is al betaald.";
+"lnd_error.no_path_to_destination" = "Kan geen path naar destination vinden.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Het lijkt erop dat de code is verlopen.";
-"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "BTCPay configuratiebestand kon niet worden gelezen.";
-"rpc_connect_qrcode_error.cant_read_qrcode" = "Onleesbare code.";
-"rpc_connect_qrcode_error.code_updated" = "Verbinding geüpdate.";
+"rpc_connect_qrcode_error.btc_pay_configuration_broken" = "Kon het configuratiebestand van BTCPay niet lezen.";
+"rpc_connect_qrcode_error.cant_read_qrcode" = "Ongeldig codeformaat.";
+"rpc_connect_qrcode_error.code_updated" = "Verbinding geüpdatet.";
 
 "channel.state.active" = "Online";
-"channel.state.inactive" = "Off line";
-"channel.state.opening" = "Openen";
-"channel.state.closing" = "Sluiten";
-"channel.state.force_closing" = "Geforceerd sluiten";
+"channel.state.inactive" = "Offline";
+"channel.state.opening" = "Open";
+"channel.state.closing" = "Sluit";
+"channel.state.force_closing" = "Forceer sluiting";
 "channel.state.waiting_close" = "Wachten op sluiten";
 
 "network_type.simnet" = "Simnet";
@@ -45,7 +45,7 @@
 "network_type.mainnet" = "Mainnet";
 
 "unit.bitcoin.btc" = "Bitcoin";
-"unit.bitcoin.mbtc" = "Milli Bitcoin";
+"unit.bitcoin.mbtc" = "Milli bitcoin";
 "unit.bitcoin.bit" = "Bits";
 "unit.bitcoin.satoshi" = "Satoshis";
 
@@ -56,118 +56,118 @@
 
 "view.amount_input.placeholder" = "Bedrag";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 minuut";
+"expiry_time.ten_minutes" = "10 minuten";
+"expiry_time.thirty_minutes" = "30 minuten";
+"expiry_time.one_hour" = "1 uur";
+"expiry_time.six_hours" = "6 uur";
+"expiry_time.one_day" = "1 dag";
+"expiry_time.one_week" = "1 week";
+"expiry_time.thirty_days" = "30 dagen";
+"expiry_time.one_year" = "1 jaar";
 
-"scene.history.title" = "Activity";
+"scene.history.title" = "Activiteit";
 "scene.history.empty_state_label" = "0 transacties 🙁";
 
 "scene.settings.title" = "Instellingen";
 "scene.settings.section.warning" = "Waarschuwing";
 "scene.settings.section.lightning" = "Lightning";
 "scene.settings.section.wallet" = "Wallet";
-"scene.settings.item.version_warning" = "Je lnd is verouderd (%@). Zap iOS werkt het beste lnd versie %@ of nieuwer.";
-"scene.settings.item.bitcoin_unit" = "Bitcoin eenheid";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.version_warning" = "Je lnd is verouderd (%@). Zap voor iOS werkt het beste lnd-versie %@ of nieuwer.";
+"scene.settings.item.bitcoin_unit" = "Bitcoin-eenheid";
+"scene.settings.item.lightning_request_expiry" = "Lightningverzoek vervaldatum";
 "scene.settings.item.currency" = "Valuta";
-"scene.settings.item.currency.popular" = "Populaire munten";
-"scene.settings.item.block_explorer" = "Block Explorer";
-"scene.settings.item.on_chain_request_address.title" = "Bitcoin adres type";
+"scene.settings.item.currency.popular" = "Populaire valuta";
+"scene.settings.item.block_explorer" = "Block-explorer";
+"scene.settings.item.on_chain_request_address.title" = "Bitcoin-adrestype";
 "scene.settings.item.on_chain_request_address.bech32" = "Bech32";
 "scene.settings.item.on_chain_request_address.p2sh" = "P2SH";
-"scene.settings.item.manage_channels" = "Beheer Channels";
-"scene.settings.item.channel_backup" = "Kanaal Backup";
-"scene.settings.item.remove_remote_node" = "Beheer Wallets";
+"scene.settings.item.manage_channels" = "Beheer channels";
+"scene.settings.item.channel_backup" = "Channel back-up";
+"scene.settings.item.remove_remote_node" = "Beheer wallets";
 
-"scene.settings.item.change_pin" = "Change PIN";
-"scene.settings.item.report_issue" = "Een probleem melden";
+"scene.settings.item.change_pin" = "Wijzig pincode";
+"scene.settings.item.report_issue" = "Meld een probleem";
 "scene.settings.item.help" = "Hulp nodig?";
 "scene.settings.item.privacy_policy" = "Privacybeleid";
 "scene.settings.item.lnd_log" = "Toon Lnd log";
 
-"scene.request.title" = "Ontvangen";
+"scene.request.title" = "Ontvang";
 "scene.request.lightning_button" = "Lightning";
 "scene.request.or_separator_label" = "of";
 "scene.request.on_chain_button" = "On-chain";
 "scene.request.generate_request_button" = "Geneer verzoek";
-"scene.request.lightning_header_title" = "Lightning betaalverzoek";
-"scene.request.on_chain_header_title" = "On-Chain betaalverzoek";
+"scene.request.lightning_header_title" = "Lightning-betaalverzoek";
+"scene.request.on_chain_header_title" = "On-chain-betaalverzoek";
 "scene.request.next_button_title" = "Volgende";
 "scene.request.subtitle.lightning" = "Kan ontvangen: %@";
 
 "scene.channels.title" = "Channels";
-"scene.channels.header.total_can_send" = "Totaal kan versturen:";
+"scene.channels.header.total_can_send" = "Totaal kan sturen:";
 "scene.channels.header.total_can_receive" = "Totaal kan ontvangen:";
-"scene.channels.header.total_pending" = "Total onafgedaan:";
+"scene.channels.header.total_pending" = "Totaal in behandeling:";
 "scene.channels.header.offline" = "Totaal offline:";
-"scene.channels.close.title" = "Sluit kanaal";
-"scene.channels.close.message" = "Weet je zeker om channel met node %@ te sluiten?";
-"scene.channels.force_close.title" = "Forceer Channel sluiting";
+"scene.channels.close.title" = "Sluit channel";
+"scene.channels.close.message" = "Wil je echt het kanaal sluiten met node %@?";
+"scene.channels.force_close.title" = "Forceer channel sluiting";
 "scene.channels.force_close.message" = "%@ is offline, weet je zeker dat je dit kanaal geforceerd wil sluiten? Je zult ongeveer %@ moeten wachten op je tegoed.";
-"scene.channels.alert.close" = "Sluit Channel";
-"scene.channels.alert.force_close" = "Geforceerd kanaal sluiten";
-"scene.channels.close_loading_view" = "Channel aan het sluiten";
+"scene.channels.alert.close" = "Sluit channel";
+"scene.channels.alert.force_close" = "Sluit channel geforceerd";
+"scene.channels.close_loading_view" = "Channel sluiten";
 "scene.channels.close_success.toast" = "Channel is aan het sluiten.";
-"scene.channels.empty_state.title" = "Open een kanaal";
-"scene.channels.empty_state.message" = "You can't transact on the Lightning Network yet! Let's open a channel to start transacting on the Lightning Network.";
-"scene.channels.empty_state.button_title" = "Open een kanaal";
+"scene.channels.empty_state.title" = "Open een channel";
+"scene.channels.empty_state.message" = "Je kan nog geen transacties uitvoeren op het Lightning Network! Laten we om te beginnen een channel openen op het Lightning Network.";
+"scene.channels.empty_state.button_title" = "Open een channel";
 
-"scene.open_channel.title" = "Open Channel";
+"scene.open_channel.title" = "Open channel";
 "scene.open_channel.channel_uri_label" = "Node:";
-"scene.open_channel.add_button" = "Open Channel";
-"scene.open_channel.subtitle.minimum_size" = "Minimum channel grootte: %@";
-"scene.open_channel.subtitle.maximum_size" = "Maximum channel grootte: %@";
+"scene.open_channel.add_button" = "Open channel";
+"scene.open_channel.subtitle.minimum_size" = "Minimale channel-grootte: %@";
+"scene.open_channel.subtitle.maximum_size" = "Maximale channel-grootte: %@";
 "scene.open_channel.subtitle.balance" = "On-chain saldo: %@";
-"scene.open_channel.suggested_peers.title" = "Aanbevolen Peers";
-"scene.open_channel.paste_button.title" = "Plak Peer adres";
+"scene.open_channel.suggested_peers.title" = "Voorgestelde peers";
+"scene.open_channel.paste_button.title" = "Plak peer-adres";
 
-"scene.pin.biometric.fallback.title" = "Use PIN";
+"scene.pin.biometric.fallback.title" = "Gebruik pincode";
 "scene.pin.biometric.reason" = "Voor toegang tot de beveiligde data";
 
 "scene.setup_pin.done_button" = "Klaar";
-"scene.setup_pin.top_label.initial" = "Choose a PIN.";
-"scene.setup_pin.top_label.non_matching" = "The PINs didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the PIN again to validate.";
+"scene.setup_pin.top_label.initial" = "Kies een pincode.";
+"scene.setup_pin.top_label.non_matching" = "De pincodes kwamen niet overeen. Probeer het opnieuw.";
+"scene.setup_pin.top_label.validate" = "Voer pincode nogmaals in.";
 
-"scene.onboarding.page_1.title" = "Jouw **sleutels**, jouw **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
-"scene.onboarding.page_1.button_title" = "Verder";
+"scene.onboarding.page_1.title" = "Jouw **keys**, jouw **coins**";
+"scene.onboarding.page_1.message" = "Met Zap heb je de controle over jouw geld. Om ervoor te zorgen dat je coins altijd veilig zijn opgeslagen, zal Zap een recovery prhase voor je aanmaken.";
+"scene.onboarding.page_1.button_title" = "Volgende";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
-"scene.onboarding.page_2.button_title" = "Verder";
+"scene.onboarding.page_2.title" = "Bewaar je **recovery phrase**";
+"scene.onboarding.page_2.message" = "Schrijf je phrase op. Je kan jouw phrase gebruiken om je geld op ieder moment terug te krijgen als je kwijtraakt.";
+"scene.onboarding.page_2.button_title" = "Volgende";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
-"scene.onboarding.page_3.button_title" = "Generate Recovery Phrase";
+"scene.onboarding.page_3.title" = "Hou het **veilig**";
+"scene.onboarding.page_3.message" = "Zorg ervoor dat je jouw recovery phrase privé houdt. Bewaar het ergens waar alleen jij hem kan vinden.";
+"scene.onboarding.page_3.button_title" = "Genereer recovery phrase";
 
-"scene.confirm_mnemonic.title" = "Confirm Recovery Phrase";
-"scene.confirm_mnemonic.headline" = "Select word number %d";
+"scene.confirm_mnemonic.title" = "Bevestig recovery phrase";
+"scene.confirm_mnemonic.headline" = "Selecteer woord %d";
 
-"scene.send.title" = "Verzenden";
-"scene.send.send_button" = "Verzenden";
+"scene.send.title" = "Verstuur";
+"scene.send.send_button" = "Verstuur";
 "scene.send.address_headline" = "Aan:";
 "scene.send.memo_headline" = "Memo:";
-"scene.send.sending" = "Verzenden...";
-"scene.send.send_amount_too_small" = "Send amount is too small.";
-"scene.send.lightning.title" = "Verstuur Lightning betaling";
-"scene.send.on_chain.title" = "Verstuur On-Chain";
-"scene.send.on_chain.fee" = "Vergoeding:";
+"scene.send.sending" = "Versturen...";
+"scene.send.send_amount_too_small" = "Verstuurbedrag is te laag.";
+"scene.send.lightning.title" = "Verstuur Lightning-betaling";
+"scene.send.on_chain.title" = "Verstuur on-chain";
+"scene.send.on_chain.fee" = "Transactiekosten:";
 "scene.send.on_chain.fee.fast" = "Snel";
-"scene.send.on_chain.fee.medium" = "Medium";
+"scene.send.on_chain.fee.medium" = "Normaal";
 "scene.send.on_chain.fee.slow" = "Langzaam";
-"scene.send.on_chain.fee.description.fast" = "Fast Transaction";
-"scene.send.on_chain.fee.description.medium" = "Medium Transaction";
-"scene.send.on_chain.fee.description.slow" = "Slow Transaction";
+"scene.send.on_chain.fee.description.fast" = "Snelle transactie";
+"scene.send.on_chain.fee.description.medium" = "Normale transactie";
+"scene.send.on_chain.fee.description.slow" = "Langzame transactie";
 
-"scene.send.on_chain.fee.estimated_delivery" = "Estimated Delivery: %@";
+"scene.send.on_chain.fee.estimated_delivery" = "Verwachte Levering: %@";
 "scene.send.authentication_failed" = "Verificatie mislukt";
 "scene.send.maximum_fee" = "Verwachte kosten:";
 "scene.send.subtitle.on_chain_balance" = "On-chain saldo: %@";
@@ -175,58 +175,58 @@
 "scene.send.success_label" = "Betaling succesvol";
 "scene.send.paste_button.title" = "Plak adres";
 
-"scene.connect_remote_node.title" = "Verbinden Remote-Node";
-"scene.connect_remote_node.empty_state" = "Scan the QR Code generated by lndconnect, BTCPay Server, or paste the link you get from running 'lndconnect -j' to connect to your node.";
+"scene.connect_remote_node.title" = "Verbind remote-node";
+"scene.connect_remote_node.empty_state" = "Scan de QR-code die is gegenereerd door lndconnect, BTCPay Server, of plak de link die je krijgt door 'lndconnect -j' te draaien om verbinding te maken met je node.";
 "scene.connect_remote_node.url_label" = "Adres";
 "scene.connect_remote_node.certificate_label" = "Identiteit";
-"scene.connect_remote_node.connect_button" = "Verbinding maken";
+"scene.connect_remote_node.connect_button" = "Verbind";
 "scene.connect_remote_node.scan_button" = "Scan";
-"scene.connect_remote_node.paste_button" = "Plakken";
+"scene.connect_remote_node.paste_button" = "Plak";
 "scene.connect_remote_node.help_button" = "Hulp nodig?";
-"scene.connect_remote_node.server_error" = "Kan geen verbinding maken met de server.";
+"scene.connect_remote_node.server_error" = "Kon geen verbinding maken met de server.";
 "scene.connect_remote_node.your_node_title" = "Jouw node";
 "scene.connect_remote_node.certificate_detail.certificate_title" = "Certificaat";
-"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaroon";
+"scene.connect_remote_node.certificate_detail.macaroon_title" = "Macaron";
 "scene.connect_remote_node.edit_url.title" = "Adres";
 
-"scene.create_wallet.title" = "Recovery Phrase";
-"scene.create_wallet.description_label" = "Write down the recovery phrase and store it at a safe location.";
+"scene.create_wallet.title" = "Recovery phrase";
+"scene.create_wallet.description_label" = "Schrijf de recovery phrase op en bewaar deze op een veilige locatie.";
 "scene.create_wallet.next_button" = "Volgende";
 
-"scene.recover_wallet.title" = "Wallet herstellen";
+"scene.recover_wallet.title" = "Herstel wallet";
 "scene.recover_wallet.done_button" = "Klaar";
-"scene.recover_wallet.description_label" = "Enter your recovery phrase:";
+"scene.recover_wallet.description_label" = "Voer je recovery phrase in:";
 "scene.recover_wallet.placeholder" = "abandon ability able about above absent absorb abstract absurd abuse access accident account accuse achieve acid acoustic acquire across act action actor actress actual";
-"scene.recover_wallet.select_channel_backup_button" = "Kies kanaal backup";
+"scene.recover_wallet.select_channel_backup_button" = "Selecteer back-upchannel";
 
-"scene.select_wallet_connection.create.title" = "Aanmaken";
-"scene.select_wallet_connection.recover.title" = "Herstellen";
-"scene.select_wallet_connection.connect.title" = "Verbinden";
-"scene.select_wallet_connection.message" = "Bitcoin for **everyone**";
+"scene.select_wallet_connection.create.title" = "Maak aan";
+"scene.select_wallet_connection.recover.title" = "Herstel";
+"scene.select_wallet_connection.connect.title" = "Verbind";
+"scene.select_wallet_connection.message" = "Bitcoin voor **iedereen**";
 
-"scene.main.send_button" = "Verzenden";
-"scene.main.receive_button" = "Ontvangen";
+"scene.main.send_button" = "Verstuur";
+"scene.main.receive_button" = "Ontvang";
 "scene.main.exchange_rate_label" = "%@ per BTC";
 
-"scene.qr_code_detail.title" = "Ontvangen";
+"scene.qr_code_detail.title" = "Ontvang";
 
-"scene.sync.description_label" = "Synchroniseren naar blockchain…";
+"scene.sync.description_label" = "Synchroniseer naar blockchain…";
 
-"scene.transaction_detail.title.lightning_invoice" = "Rekening detail";
-"scene.transaction_detail.title.payment_detail" = "Betaling detail";
-"scene.transaction_detail.title.transaction_detail" = "Transactie detail";
-"scene.transaction_detail.title.channel_event_detail" = "Channel event";
+"scene.transaction_detail.title.lightning_invoice" = "Factuurgegevens";
+"scene.transaction_detail.title.payment_detail" = "Betalingsgegevens";
+"scene.transaction_detail.title.transaction_detail" = "Transactiegegevens";
+"scene.transaction_detail.title.channel_event_detail" = "Channelgebeurtenis";
 "scene.transaction_detail.title.failed_payment" = "Mislukte betaling";
 "scene.transaction_detail.memo_label" = "Memo";
 "scene.transaction_detail.amount_label" = "Bedrag";
 "scene.transaction_detail.fee_label" = "Vergoeding";
 "scene.transaction_detail.date_label" = "Datum";
-"scene.transaction_detail.transaction_id_label" = "Transactie id";
+"scene.transaction_detail.transaction_id_label" = "Transactie ID";
 "scene.transaction_detail.address_label" = "Adres";
-"scene.transaction_detail.expiry_label" = "Vervaltijd";
+"scene.transaction_detail.expiry_label" = "Vervaldatum";
 "scene.transaction_detail.expiry_label.expired" = "Verlopen";
 "scene.transaction_detail.invoice_state_label" = "Staat";
-"scene.transaction_detail.invoice_state_label.settled" = "verrekkend";
+"scene.transaction_detail.invoice_state_label.settled" = "verrekend";
 "scene.transaction_detail.preimage_label" = "Preimage";
 "scene.transaction_detail.preimage_copy_message" = "Preimage gekopieerd.";
 "scene.transaction_detail.invoice_copy_message" = "Factuur gekopieerd.";
@@ -234,112 +234,112 @@
 "scene.channel_detail.remote_pub_key_label" = "Remote PubKey";
 "scene.channel_detail.local_balance_label" = "Lokaal saldo";
 "scene.channel_detail.remote_balance_label" = "Remote saldo";
-"scene.channel_detail.closing_time.label" = "Sluiten in";
+"scene.channel_detail.closing_time.label" = "Sluit in";
 "scene.channel_detail.funding_transaction_label" = "Financieringstransactie";
-"scene.channel_detail.closing_transaction_label" = "Closing Transaction";
-"scene.channel_detail.close_button" = "Sluit kanaal";
-"scene.channel_detail.force_close_button" = "Geforceerd Channel sluiten";
+"scene.channel_detail.closing_transaction_label" = "Translatie sluiten";
+"scene.channel_detail.close_button" = "Sluit channel";
+"scene.channel_detail.force_close_button" = "Sluit channel geforceerd af";
 
 "scene.filter.title" = "Filter";
-"scene.filter.section_header.transaction_types" = "Transactie types";
+"scene.filter.section_header.transaction_types" = "Transactietypen";
 "scene.filter.displayOnChainTransactions" = "On-chain betalingen";
 "scene.filter.display_expired_invoices" = "Verlopen facturen";
-"scene.filter.displayLightningPayments" = "Lightning betalingen";
-"scene.filter.displayLightningInvoices" = "Aangemaakte fakturen";
-"scene.filter.displayChannelEvents" = "Channel Events";
+"scene.filter.displayLightningPayments" = "Lightning-betalingen";
+"scene.filter.displayLightningInvoices" = "Aangemaakte facturen";
+"scene.filter.displayChannelEvents" = "Channelgebeurtenis";
 
-"scene.qrcode_scanner.top_label" = "Scan QR Code";
-"scene.qrcode_scanner.error.unknown_format" = "Ongeldig adres formaat.";
-"scene.qrcode_scanner.error.wrong_network" = "Je probeerde een link te open voor %@, maar je node is verbonden met %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons, Zap does not support invoices without a specified amount.";
-"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
-"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
-"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR Code.";
+"scene.qrcode_scanner.top_label" = "Scan QR-code";
+"scene.qrcode_scanner.error.unknown_format" = "Onbekend adresformaat.";
+"scene.qrcode_scanner.error.wrong_network" = "Je hebt geprobeerd een invoice te openen voor %@, maar je node is verbonden met %@.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Om veiligheidsredenen ondersteunt Zap geen invoices zonder een bepaald bedrag.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Instellingen";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Cameratoegang geweigerd";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Schakel cameratoegang in om de QR-code te scannen.";
 
 "scene.wallet.title" = "Wallet";
 "scene.wallet.total_balance" = "Totaal saldo";
 "scene.wallet.detail.on_chain" = "On-chain:";
 "scene.wallet.detail.lightning" = "Lightning:";
 "scene.wallet.detail.pending" = "In behandeling:";
-"scene.wallet.empty_state.title" = "Stort naar je Zap portemonnee";
-"scene.wallet.empty_state.message" = "Your wallet is empty! Get started by depositing some funds.";
-"scene.wallet.empty_state.button_title" = "Deposit funds";
-"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
-"scene.wallet.open_channel.action" = "Open a channel";
+"scene.wallet.empty_state.title" = "Stort tegoed in je wallet";
+"scene.wallet.empty_state.message" = "Je wallet is leeg! Ga aan de slag door wat tegoed te storten.";
+"scene.wallet.empty_state.button_title" = "Stort tegoed";
+"scene.wallet.open_channel.message" = "Je kan nog geen transacties uitvoeren op het Lightning Network. Open eerst een channel.";
+"scene.wallet.open_channel.action" = "Open een channel";
 
-"scene.time_lock.headline" = "Wrong PIN";
-"scene.time_lock.description" = "Je wallet is geblokkeerd voor:";
+"scene.time_lock.headline" = "Verkeerde pincode";
+"scene.time_lock.description" = "Je wallet is vergrendeld voor:";
 
-"scene.modal_pin.headline" = "Enter PIN";
-"scene.modal_pin.description" = "Please enter your PIN to continue";
+"scene.modal_pin.headline" = "Voer pincode in";
+"scene.modal_pin.description" = "Voer je pincode in om verder te gaan";
 
-"scene.history.cell.payment_sent" = "Betaling verzonden";
+"scene.history.cell.payment_sent" = "Betaling verstuurd";
 "scene.history.cell.payment_received" = "Betaling ontvangen";
 "scene.history.cell.invoice_created" = "Betalingsverzoek aangemaakt";
-"scene.history.cell.channel_opened" = "Kanaal geopened";
-"scene.history.cell.channel_closed" = "Kanaal gesloten";
-"scene.history.cell.force_close_channel" = "Geforceerd gesloten kanaal";
-"scene.history.cell.remote_force_close_channel" = "Remote forced close Channel";
-"scene.history.cell.breach_close_channel" = "Breach closed Channel";
-"scene.history.cell.close_channel_funding_canceled" = "Closed Channel (funding canceled)";
+"scene.history.cell.channel_opened" = "Channel geopened";
+"scene.history.cell.channel_closed" = "Channel gesloten";
+"scene.history.cell.force_close_channel" = "Sluit channel geforceerd af";
+"scene.history.cell.remote_force_close_channel" = "Sluit channel remote geforceerd";
+"scene.history.cell.breach_close_channel" = "Breach gesloten channel";
+"scene.history.cell.close_channel_funding_canceled" = "Gesloten channel (financiering geannuleerd)";
 "scene.history.cell.channel_abandoned" = "Channel verlaten";
 "scene.history.cell.transaction_sent" = "Betaling verstuurd";
 "scene.history.cell.transaction_received" = "Betaling ontvangen";
 "scene.history.cell.label.new" = "nieuw";
-"scene.history.cell.label.error" = "fout";
+"scene.history.cell.label.error" = "error";
 
-"scene.node_uri.title" = "Verbinden met node";
+"scene.node_uri.title" = "Verbind met node";
 "scene.node_uri.alias_label" = "Alias";
 "scene.node_uri.uri_label" = "URI";
 
-"scene.connect_node_uri.action_sheet.title" = "Verbinding maken";
-"scene.connect_node_uri.action_sheet.connect_button" = "Verbinden";
+"scene.connect_node_uri.action_sheet.title" = "Verbind";
+"scene.connect_node_uri.action_sheet.connect_button" = "Verbind";
 "scene.connect_node_uri.action_sheet.message" = "Weet je zeker dat je wil verbinden met node %@?";
 
 "scene.wallet_list.title" = "Wallets";
 
-"scene.unlock.title" = "Ontgrendel Node";
+"scene.unlock.title" = "Ontgrendel node";
 "scene.unlock.unlock_button" = "Ontgrendel";
 "scene.unlock.password_placeholder" = "Wachtwoord";
 "scene.unlock.title_label" = "Ontgrendel %@";
 
-"scene.manage_wallets.title" = "Beheer Wallets";
+"scene.manage_wallets.title" = "Beheer wallets";
 "scene.manage_wallets.cell.remote" = "remote";
-"scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.cell.local" = "lokaal";
+"scene.manage_wallets.section_title.local" = "Lokale wallet";
+"scene.manage_wallets.section_title.remote" = "Remote wallets";
 
-"scene.channel_backup.title" = "Channel Backup";
+"scene.channel_backup.title" = "Back-upchannel";
 "scene.channel_backup.cell_title" = "%@ channel.backup";
 "scene.channel_backup.not_found" = "bestand niet gevonden";
 "scene.channel_backup.error.iCloudDisabled" = "iCloud lijkt uitgeschakeld.";
-"scene.channel_backup.error.iCloudBackupFailed" = "iCloud backup mislukt.";
-"scene.channel_backup.error.localBackupFailed" = "Local file backup failed.";
-"scene.channel_backup.error.lndError" = "Could not get channel backup from lnd.";
+"scene.channel_backup.error.iCloudBackupFailed" = "iCloud back-up mislukt.";
+"scene.channel_backup.error.localBackupFailed" = "Back-up van lokaal bestand is mislukt.";
+"scene.channel_backup.error.lndError" = "Kon back-upchannel niet ophalen van lnd.";
 
 "scene.push_notification.headline" = "Blijf **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
-"scene.push_notification.confirm_button_title" = "Turn on notifications";
+"scene.push_notification.message" = "Om je tegoed veilig te houden, moet Zap zo nu en dan synchroniseren. Wil je een melding ontvangen wanneer je wallet moet worden gesynchroniseerd?";
+"scene.push_notification.confirm_button_title" = "Schakel meldingen in";
 "scene.push_notification.skip_button_title" = "Sla over";
 
-"scene.my_node.title" = "My Node";
+"scene.my_node.title" = "Mijn node";
 "scene.my_node.channels.title" = "Channels";
-"scene.my_node.channels.subtitle" = "Manage your capacity";
-"scene.my_node.channel_backup.title" = "Channel Backup";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
+"scene.my_node.channels.subtitle" = "Beheer je capaciteit";
+"scene.my_node.channel_backup.title" = "Back-upchannel";
+"scene.my_node.channel_backup.subtitle" = "Stel noodopties in";
+"scene.my_node.settings.title" = "Instellingen";
+"scene.my_node.settings.subtitle" = "Bewerk je voorkeuren";
 "scene.my_node.support.title" = "Support";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.support.subtitle" = "Krijg support en stuur feedback";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Neem op";
 "scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
 
-"scene.lnurl.withdraw.title" = "Withdraw";
-"scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.title" = "Neem op";
+"scene.lnurl.withdraw.description" = "Omschrijving";
+"scene.lnurl.withdraw.button_title" = "Neem op";
 
-"notification.sync.title" = "Please sync";
-"notification.sync.day_12.body" = "Please remember syncing your wallet to make sure you stay safe";
-"notification.sync.day_13.body" = "You have one more day to sync your wallet before it's getting dangerous.";
-"notification.sync.day_14.body" = "Please sync your wallet as soon as possible.";
+"notification.sync.title" = "Synchroniseer";
+"notification.sync.day_12.body" = "Vergeet niet je wallet te synchroniseren om ervoor te zorgen dat je veilig blijft";
+"notification.sync.day_13.body" = "Je hebt nog een dag om je wallet te synchroniseren voordat deze onveilig wordt.";
+"notification.sync.day_14.body" = "Synchroniseer je wallet zo snel mogelijk.";

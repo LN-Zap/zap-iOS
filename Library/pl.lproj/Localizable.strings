@@ -1,6 +1,6 @@
 "generic.memo.placeholder" = "Do czego to służy?";
 "generic.qr_code.copy_button" = "Kopiuj";
-"generic.qr_code.copy_success_message" = "Address has been copied to clipboard.";
+"generic.qr_code.copy_success_message" = "Adres został skopiowany do schowka.";
 "generic.pasteboard.invalid_address" = "Nieprawidłowy adres";
 "generic.qr_code.share_button" = "Udostępnij";
 "generic.cancel" = "Kasować";
@@ -15,8 +15,8 @@
 "error.wrong_uri_network" = "Próbowałeś utworzyć połączenie z %@, ale Twój node nie ma połączenia z %@.";
 "error.block_explorer.unsupported_network" = "%@ nie obsługuje %@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
+"lnd_error.wallet_encrypted" = "Portfel jest zaszyfrowany";
+"lnd_error.lnd_not_running" = "Lnd nie pracuje prawidłowo.";
 "lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
 "lnd_error.no_outputs" = "No outputs.";
 "lnd_error.rest_network_error" = "Check your internet connection.";
@@ -50,9 +50,9 @@
 "unit.bitcoin.satoshi" = "Satoshis";
 
 "toast.invoice" = "Otrzymałem %@";
-"toast.invoice_memo" = "Otrzymałem %@ \"%@\"";
+"toast.invoice_memo" = "Otrzymano %@ \"%@\"";
 
-"transaction.no_destination_address" = "Brak adresy docelowego";
+"transaction.no_destination_address" = "Brak adresu docelowego";
 
 "view.amount_input.placeholder" = "Kwota";
 
@@ -157,7 +157,7 @@
 "scene.send.memo_headline" = "Notatka:";
 "scene.send.sending" = "Sending...";
 "scene.send.send_amount_too_small" = "Send amount is too small.";
-"scene.send.lightning.title" = "Wyślij płatność LN";
+"scene.send.lightning.title" = "Wyślij płatność Lightning";
 "scene.send.on_chain.title" = "Send On-Chain";
 "scene.send.on_chain.fee" = "Fee:";
 "scene.send.on_chain.fee.fast" = "Szybko";

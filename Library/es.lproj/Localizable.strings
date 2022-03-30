@@ -15,17 +15,17 @@
 "error.wrong_uri_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
 "error.block_explorer.unsupported_network" = "%@ no es compatible con %@.";
 
-"lnd_error.wallet_encrypted" = "Wallet is encrypted";
-"lnd_error.lnd_not_running" = "Lnd does not seem to be running properly.";
-"lnd_error.transaction_output_is_dust" = "Transaction output is dust.";
-"lnd_error.no_outputs" = "No outputs.";
-"lnd_error.rest_network_error" = "Check your internet connection.";
-"lnd_error.unable_to_find_node" = "Unable to find node.";
-"lnd_error.insufficient_funds_available" = "Insufficient funds available to construct transaction.";
-"lnd_error.unknown_error" = "Unknown Error 1";
-"lnd_error.api_transformation_error" = "Unknown Error 2";
-"lnd_error.invoice_already_paid" = "Invoice is already paid.";
-"lnd_error.no_path_to_destination" = "Unable to find a path to destination.";
+"lnd_error.wallet_encrypted" = "La billetera está encriptada";
+"lnd_error.lnd_not_running" = "Parece que \"lnd\" no ésta funcionando correctamente.";
+"lnd_error.transaction_output_is_dust" = "La salida de la transacción es polvo.";
+"lnd_error.no_outputs" = "No hay salidas.";
+"lnd_error.rest_network_error" = "Chequea tu conexión a internet.";
+"lnd_error.unable_to_find_node" = "No se puede encontrar el nodo.";
+"lnd_error.insufficient_funds_available" = "Fondos insuficientes disponibles para construir transacción.";
+"lnd_error.unknown_error" = "Error desconocido 1";
+"lnd_error.api_transformation_error" = "Error desconocido 2";
+"lnd_error.invoice_already_paid" = "La factura ya fue paga.";
+"lnd_error.no_path_to_destination" = "No es posible encontrar un camino al destino.";
 
 "rpc_connect_qrcode_error.btc_pay_expired" = "Parece que el código ha caducado.";
 "rpc_connect_qrcode_error.btc_pay_configuration_broken" = "No se pudo leer el archivo de configuraciones de BTCPay.";
@@ -56,17 +56,17 @@
 
 "view.amount_input.placeholder" = "Cantidad";
 
-"expiry_time.one_minute" = "1 Minute";
-"expiry_time.ten_minutes" = "10 Minutes";
-"expiry_time.thirty_minutes" = "30 Minutes";
-"expiry_time.one_hour" = "1 Hour";
-"expiry_time.six_hours" = "6 Hours";
-"expiry_time.one_day" = "1 Day";
-"expiry_time.one_week" = "1 Week";
-"expiry_time.thirty_days" = "30 Days";
-"expiry_time.one_year" = "1 Year";
+"expiry_time.one_minute" = "1 Minuto";
+"expiry_time.ten_minutes" = "10 Minutos";
+"expiry_time.thirty_minutes" = "30 Minutos";
+"expiry_time.one_hour" = "1 Hora";
+"expiry_time.six_hours" = "6 Horas";
+"expiry_time.one_day" = "1 Día";
+"expiry_time.one_week" = "1 Semana";
+"expiry_time.thirty_days" = "30 Días";
+"expiry_time.one_year" = "1 Año";
 
-"scene.history.title" = "Activity";
+"scene.history.title" = "Actividad";
 "scene.history.empty_state_label" = "0 transacciones 🙁";
 
 "scene.settings.title" = "Configuración";
@@ -75,7 +75,7 @@
 "scene.settings.section.wallet" = "Cartera";
 "scene.settings.item.version_warning" = "Tu lnd es version vieja (%@). Zap iOS funciona mejor con lnd version %@ o más nueva.";
 "scene.settings.item.bitcoin_unit" = "Unidad de Bitcoin";
-"scene.settings.item.lightning_request_expiry" = "Lightning Request Expiry";
+"scene.settings.item.lightning_request_expiry" = "Tiempo de vencimiento de facturas";
 "scene.settings.item.currency" = "Moneda";
 "scene.settings.item.currency.popular" = "Monedas populares";
 "scene.settings.item.block_explorer" = "Explorador de bloques";
@@ -86,7 +86,7 @@
 "scene.settings.item.channel_backup" = "Respaldo de Canal";
 "scene.settings.item.remove_remote_node" = "Administrar Carteras";
 
-"scene.settings.item.change_pin" = "Change PIN";
+"scene.settings.item.change_pin" = "Cambiar PIN";
 "scene.settings.item.report_issue" = "Informar sobre un problema";
 "scene.settings.item.help" = "¿Necesita ayuda?";
 "scene.settings.item.privacy_policy" = "Politica de Privacidad";
@@ -128,24 +128,24 @@
 "scene.open_channel.suggested_peers.title" = "Nodos sugeridos";
 "scene.open_channel.paste_button.title" = "Pega dirección de nodo";
 
-"scene.pin.biometric.fallback.title" = "Use PIN";
+"scene.pin.biometric.fallback.title" = "Usar PIN";
 "scene.pin.biometric.reason" = "Acceder datos seguros";
 
 "scene.setup_pin.done_button" = "Hecho";
-"scene.setup_pin.top_label.initial" = "Choose a PIN.";
-"scene.setup_pin.top_label.non_matching" = "The PINs didn't match. Please try again.";
-"scene.setup_pin.top_label.validate" = "Enter the PIN again to validate.";
+"scene.setup_pin.top_label.initial" = "Elige un PIN.";
+"scene.setup_pin.top_label.non_matching" = "Los PINs no coinciden. Por favor, intenta nuevamente.";
+"scene.setup_pin.top_label.validate" = "Ingresa el PIN nuevamente para validar.";
 
-"scene.onboarding.page_1.title" = "Your **keys**, your **coins**";
-"scene.onboarding.page_1.message" = "With Zap, you are in control of your money. To make sure your coins are always stored safely, Zap will provide a recovery phrase for you.";
+"scene.onboarding.page_1.title" = "Tus **llaves**, tu **dinero**";
+"scene.onboarding.page_1.message" = "Con Zap, tú estás en control de tu dinero. Para asegurar que tu dinero esté siempre seguro, Zap te va a proveer una frase de recuperación.";
 "scene.onboarding.page_1.button_title" = "Continuar";
 
-"scene.onboarding.page_2.title" = "Save your **recovery phrase**";
-"scene.onboarding.page_2.message" = "Write down your phrase. You can use your phrase to recover your funds anytime if you misplace your device.";
+"scene.onboarding.page_2.title" = "Guarda tu **frase de recuperación**";
+"scene.onboarding.page_2.message" = "Escribe tu frase en algo. Puedes usar tu frase de recuperación para recuperar tu dinero en cualquier momento en caso de que pierdas tu teléfono.";
 "scene.onboarding.page_2.button_title" = "Continuar";
 
-"scene.onboarding.page_3.title" = "Keep it **safe**";
-"scene.onboarding.page_3.message" = "Make sure to keep your recovery phrase private. Store it somewhere only you will find it.";
+"scene.onboarding.page_3.title" = "Mantenla **segura**";
+"scene.onboarding.page_3.message" = "Asegurate de mantener privada tu frase de recuperación. Guardala en un lugar donde solo tú la encuentres.";
 "scene.onboarding.page_3.button_title" = "Genera Frase de Respaldo";
 
 "scene.confirm_mnemonic.title" = "Confirma Frase de Respaldo";
@@ -156,7 +156,7 @@
 "scene.send.address_headline" = "Para:";
 "scene.send.memo_headline" = "Memo:";
 "scene.send.sending" = "Enviando...";
-"scene.send.send_amount_too_small" = "Send amount is too small.";
+"scene.send.send_amount_too_small" = "El monto de envío es muy poco.";
 "scene.send.lightning.title" = "Enviar pago \"Lightning\"";
 "scene.send.on_chain.title" = "Enviar en cadena";
 "scene.send.on_chain.fee" = "Tarifa:";
@@ -176,7 +176,7 @@
 "scene.send.paste_button.title" = "Pega Dirección";
 
 "scene.connect_remote_node.title" = "Conecte el nodo remoto";
-"scene.connect_remote_node.empty_state" = "Scan the QR Code generated by lndconnect, BTCPay Server, or paste the link you get from running 'lndconnect -j' to connect to your node.";
+"scene.connect_remote_node.empty_state" = "Escanéa el código QR generado por \"lndconnect\", \"BTCPay Server\", o pega el enlace que devuelve \"lndconnect -j\", para conectarte a tu nodo.";
 "scene.connect_remote_node.url_label" = "Dirección";
 "scene.connect_remote_node.certificate_label" = "Credenciales";
 "scene.connect_remote_node.connect_button" = "Conectar";
@@ -248,13 +248,13 @@
 "scene.filter.displayLightningInvoices" = "Facturas creadas";
 "scene.filter.displayChannelEvents" = "Eventos en el canal";
 
-"scene.qrcode_scanner.top_label" = "Scan QR Code";
+"scene.qrcode_scanner.top_label" = "Escanear código QR";
 "scene.qrcode_scanner.error.unknown_format" = "Formato de dirección desconocida.";
 "scene.qrcode_scanner.error.wrong_network" = "Has intentado establecer una conexión para %@ pero tu nodo esta conectado a %@.";
-"scene.qrcode_scanner.error.zero_amount_invoice" = "For security reasons, Zap does not support invoices without a specified amount.";
-"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Settings";
-"scene.qrcode_scanner.camera_access_denied_alert.title" = "Camera access denied";
-"scene.qrcode_scanner.camera_access_denied_alert.message" = "Turn on camera access in the settings to scan the QR Code.";
+"scene.qrcode_scanner.error.zero_amount_invoice" = "Por razones de seguridad, Zap no soporta facturas sin un monto especificado.";
+"scene.qrcode_scanner.camera_access_denied_alert.ok" = "Configuración";
+"scene.qrcode_scanner.camera_access_denied_alert.title" = "Acceso a la cámara denegado";
+"scene.qrcode_scanner.camera_access_denied_alert.message" = "Habilita el acceso a la cámara en la configuración del teléfono para poder escanear el código QR.";
 
 "scene.wallet.title" = "Cartera";
 "scene.wallet.total_balance" = "Balance Total";
@@ -264,14 +264,14 @@
 "scene.wallet.empty_state.title" = "Agregue fondos a su cartera Zap";
 "scene.wallet.empty_state.message" = "Tu cartera esta vacía! Para empezar, hay que depositar fondos.";
 "scene.wallet.empty_state.button_title" = "Deposita fondos";
-"scene.wallet.open_channel.message" = "You can’t transact on the the Lightning Network yet. Open a channel to start.";
-"scene.wallet.open_channel.action" = "Open a channel";
+"scene.wallet.open_channel.message" = "No puedes usar la red Lightning aún. Abre un canal para empezar.";
+"scene.wallet.open_channel.action" = "Abrir un canal";
 
-"scene.time_lock.headline" = "Wrong PIN";
+"scene.time_lock.headline" = "PIN incorrecto";
 "scene.time_lock.description" = "Su cartera está bloqueada para:";
 
-"scene.modal_pin.headline" = "Enter PIN";
-"scene.modal_pin.description" = "Please enter your PIN to continue";
+"scene.modal_pin.headline" = "Ingresa tu PIN";
+"scene.modal_pin.description" = "Por favor, ingresa tu PIN para continuar";
 
 "scene.history.cell.payment_sent" = "Pago enviado";
 "scene.history.cell.payment_received" = "Pago recibido";
@@ -306,8 +306,8 @@
 "scene.manage_wallets.title" = "Administrar Carteras";
 "scene.manage_wallets.cell.remote" = "remoto";
 "scene.manage_wallets.cell.local" = "local";
-"scene.manage_wallets.section_title.local" = "Local Wallet";
-"scene.manage_wallets.section_title.remote" = "Remote Wallets";
+"scene.manage_wallets.section_title.local" = "Billetera local";
+"scene.manage_wallets.section_title.remote" = "Billeteras remotas";
 
 "scene.channel_backup.title" = "Respaldo de Canal";
 "scene.channel_backup.cell_title" = "%@ canal.respaldo";
@@ -317,27 +317,27 @@
 "scene.channel_backup.error.localBackupFailed" = "Respaldo de archivo local falló.";
 "scene.channel_backup.error.lndError" = "Error al tratar de conseguir el respaldo del canala de lnd.";
 
-"scene.push_notification.headline" = "Stay **up to date**";
-"scene.push_notification.message" = "To keep your funds safe, Zap needs to sync once in a while. Do you want to be notified when your wallet needs to sync?";
+"scene.push_notification.headline" = "Mantente *al día*";
+"scene.push_notification.message" = "Para mantener tus fondos seguros, Zap necesita sincronizar tu billetera una vez cada tanto. ¿Quieres ser notificado cuando tu billetera necesite ser sincronizada?";
 "scene.push_notification.confirm_button_title" = "Activar notificaciones";
 "scene.push_notification.skip_button_title" = "Saltar";
 
-"scene.my_node.title" = "My Node";
-"scene.my_node.channels.title" = "Channels";
-"scene.my_node.channels.subtitle" = "Manage your capacity";
-"scene.my_node.channel_backup.title" = "Channel Backup";
-"scene.my_node.channel_backup.subtitle" = "Set up emergency options";
-"scene.my_node.settings.title" = "Settings";
-"scene.my_node.settings.subtitle" = "Edit your preferences";
-"scene.my_node.support.title" = "Support";
-"scene.my_node.support.subtitle" = "Get support and send feedback";
+"scene.my_node.title" = "Mi Nodo";
+"scene.my_node.channels.title" = "Canales";
+"scene.my_node.channels.subtitle" = "Maneja tu capacidad";
+"scene.my_node.channel_backup.title" = "Respaldo de canal";
+"scene.my_node.channel_backup.subtitle" = "Configura las opciones de emergencia";
+"scene.my_node.settings.title" = "Configuración";
+"scene.my_node.settings.subtitle" = "Edita tus preferencias";
+"scene.my_node.support.title" = "Soporte";
+"scene.my_node.support.subtitle" = "Consigue ayuda y reporta problemas";
 
-"scene.lnurl_qrcode_scanner.withdraw.title" = "Withdraw";
-"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Paste LNURL";
+"scene.lnurl_qrcode_scanner.withdraw.title" = "Retirar";
+"scene.lnurl_qrcode_scanner.withdraw.button_title" = "Pegar LNURL";
 
-"scene.lnurl.withdraw.title" = "Withdraw";
-"scene.lnurl.withdraw.description" = "Description";
-"scene.lnurl.withdraw.button_title" = "Withdraw";
+"scene.lnurl.withdraw.title" = "Retirar";
+"scene.lnurl.withdraw.description" = "Descripción";
+"scene.lnurl.withdraw.button_title" = "Retirar";
 
 "notification.sync.title" = "Favor de sincronizar";
 "notification.sync.day_12.body" = "Por favor recuerda sincronizar tu cartera para asegurar que estés seguro";
